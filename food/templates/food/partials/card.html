@@ -1,0 +1,13 @@
+<div class="card mb-3">
+  <h5 class="card-header ">{{ item.title }}</h5>
+  <div class="card-body border-dark">
+    <p class="card-text text-dark text-center">
+      {{ item.item_name}}
+      <hr>
+      <div class="text-center">{{item.description}}</div>
+  </div>
+  <div class="card-footer">
+    <small>Item Expires: {{ item.date_expires}}</b></small>
+    <a href="{% url 'delete' item.id %}">Delete</a>
+  </div>
+</div>

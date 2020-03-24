@@ -1,0 +1,48 @@
+{% load static %}
+
+<head>
+  <title>FoodSafe</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+
+<div id="nav-wrapper">
+  <nav id="nav">
+    <ul>
+      <li class="active"><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="#">About us</a></li>
+      <!-- <li><a href="added_recipes.html">Your recipes</a></li> -->
+      {% if user.is_authenticated %}
+        <li><a href="#">Add Item</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'signup' %}">Signup</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  </div>
+  <main role="main" class="r" style="margin-top: 4vh;">
+
+<div class='container'>
+  <hr>
+      <div class="row">
+        <div class="col">
+          <form method="post" class="mx-auto" style="text-align: center;">
+            {% csrf_token %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group row">
+                    <div class="col-8">
+                      <label for="id_{{ field.name }}">{{ field.label|title }}:</label>
+                      <br>
+                      <input class="form-control" type="{% if "password" in field.name %}password{% else %}text{% endif %}" name="{{ field.name }}" id="id_{{ field.name }}" required>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-success">Sign up</button>
+          </form>
+        </div>
+      </div>
+  </div>
+
