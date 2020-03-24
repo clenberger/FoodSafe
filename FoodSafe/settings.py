@@ -123,4 +123,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-DEFAULT_LOGOUT_URL = '/'
+DEFAULT_LOGOUT_URL = '/food/'

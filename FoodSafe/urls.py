@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from accounts.views import SignupView, LoginView
+from food import views
 
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('signup/', SignupView.as_view(), name='signup'),
     path('login/', LoginView.as_view(), name='login'),
     path('', include('django.contrib.auth.urls')),
+    path("logout", views.logout_request, name="logout"),
 ]
